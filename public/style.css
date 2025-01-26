@@ -1,41 +1,82 @@
-/* Universal Box Sizing */
-*, *::before, *::after {
+*{
+    margin: 0;
+    color: #fff;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+body{
+    margin: 0;
+    background-color: #F2F1EC;
+}
+
+.header{
+    width: 100%;
+    background-color: #365B6D;
+}
+nav{
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    background-color: #365B6D;
+    padding: 1vh;
+    padding-left: 2vh;
     box-sizing: border-box;
 }
 
-/* Reset margin and padding for all elements */
-html, body {
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
-}
-
-/* Body styling */
-body {
-    background-color: #f4f4f9; /* Set background color */
+nav .suggestions{
+    padding-top: 0.5vh;
+    border-radius: 20px;
+    background-color: #6C9286;
+    padding-left: 2vh;
+    padding-right: 2vh;
 }
 
 .main{
-    margin: 0;
+    margin-top: 1vh;
+    width: 100%;
+    position: relative;
 }
 
-.container{
+.filtersearch{
     display: flex;
-    flex-wrap: nowrap;
-    overflow: scroll;
-    align-items: baseline;
-    gap: 1vh;
+    margin-left: 2vh;
 }
 
-/* Header styling */
-header {
-    background-color: #004084;
-    color: white;
-    text-align: center;
-    padding: 1rem;
-    width: 100%; /* Ensure it takes up full width */
-    box-sizing: border-box; /* Includes padding in the width calculation */
-    position: relative; /* Prevents it from being affected by surrounding elements */
+#filterbtn{
+    padding-top: 0.5vh;
+    border-radius: 20px;
+    background-color: #365B6D;
+    padding: 1vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    border: none;
+}
+
+.hide{
+    display: none;
+}
+
+.search-bar input{
+    margin-left: 1vh;
+    padding-top: 0.5vh;
+    border-radius: 20px;
+    background-color: #f5f5f5;
+    padding: 1vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    border: 1px solid #365B6D;
+}
+
+.filters select{
+    margin-left: 1vh;
+    padding-top: 0.5vh;
+    border-radius: 20px;
+    background-color: #365B6D;
+    border: 1px solid #365B6D;
+    padding: 1vh;
+    padding-left: 2vh;
+    padding-right: 2vh;
+    appearance: none;
 }
 
 /* Book Container */
@@ -209,79 +250,6 @@ header {
     border-bottom-left-radius: 20px;
 }
 
-
-#searchInput:focus {
-    border-color: #002366;
-}
-
-/* Search icon inside the search bar */
-.search-bar i {
-    color: #aaa;
-    height: 100%;
-    padding: 1.5vh;
-    cursor: pointer;
-}
-
-/* Filters container styling */
-.filters {
-    display: flex;
-    gap: 1px;
-}
-
-/* Filter dropdowns */
-/* Base Dropdown Styling */
-select {
-    appearance: none; /* Remove default browser dropdown styling */
-    padding: 12px 19px;
-    border: 2px solid #ddd;
-    border-radius: 8px;
-    background-color: #f9f9f9;
-    font-size: 16px;
-    color: #333;
-    outline: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23333' fill='none' stroke-width='2'/%3E%3C/svg%3E");
-    background-repeat: no-repeat;
-    background-position: right 10px center;
-    background-size: 10px;
-}
-
-/* Dropdown Options Styling */
-select option {
-    padding: 10px;
-    background-color: #fff;
-    color: #333;
-}
-
-/* On Focus */
-select:focus {
-    border-color: #007BFF; /* Highlight border on focus */
-    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
-}
-
-/* Dropdown Resetting for Compatibility */
-select {
-    position: relative;
-    z-index: 1; /* Ensure dropdown options appear above content */
-}
-
-
-
-
-/* Filter labels */
-label {
-    font-size: 16px;
-    font-weight: bold;
-    margin-right: 10px;
-}
-
-.filters, .search-bar {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-}
 
 /* Upload */
 .upload-container {
