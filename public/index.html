@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audiobook Library</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+</head>
+<body>
+    <header>
+        <nav>
+            <div class="rightnav">
+                <a href="upload.html">Upload Audio Book</a>
+            </div>
+        </nav>
+        <h1>NSS Audiobook</h1>
+    </header>
+    <div class="main">
+        <div class="filtersearch">
+            <div class="filters">
+                <select id="languageFilter">
+                    <option value="">Select Language</option>
+                    <!-- Options will be dynamically populated -->
+                </select>
+                <select id="subjectFilter">
+                    <option value="">Select Subject</option>
+                    <!-- Options will be dynamically populated -->
+                </select>
+                <select id="authorFilter">
+                    <option value="">Select Author</option>
+                    <!-- Options will be dynamically populated -->
+                </select>
+            </div>
+            
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search books..." />
+                <i class="fa fa-search"></i> <!-- Search icon -->
+            </div>
+        </div>
+        
+        <div class="container"></div>
+        </div>
+        
+        
+        </div>
+        <div class="audio-player">
+            <audio id="audioPlayer" preload="metadata">
+              <source src="audio/chapter1.mp3" type="audio/mp3">
+            </audio>
+          
+            <div class="controls">
+              <button class="play-pause-btn" id="playPauseBtn">
+                <i class="fa fa-play"></i>
+              </button>
+              
+              <div class="progress-container">
+                <input type="range" class="progress-bar" id="progressBar" value="0" max="100">
+              </div>
+              
+              <!-- Current Time and Duration -->
+              <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+          
+              <!-- Mute Button -->
+              <button class="mute-btn" id="muteBtn">
+                <i class="fa fa-volume-up"></i>
+              </button>
+            </div>
+          </div>
+    </div>
+    <div id="suggestionBox">
+        <div id="suggestionHeader">Suggestions</div>
+        <div id="suggestionContent">
+            <div id="submittedSuggestions"></div>
+            <textarea id="suggestionInput" placeholder="Write your suggestion here..."></textarea>
+            <button id="submitSuggestion">Submit</button>
+        </div>
+    </div>
+    
+
+      
+      
+    <script src="script.js"></script>
+</body>
+</html>
