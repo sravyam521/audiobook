@@ -3,6 +3,7 @@ require('dotenv').config(); // Load environment variables from the Render enviro
 const mysql = require('mysql2');
 
 const pool = mysql.createPool({
+    uri: process.env.MYSQL_URL,
     host: process.env.MYSQLHOST,       // Host from Render
     user: 'root',                      // User is usually 'root' for MySQL
     password: process.env.MYSQLPASSWORD, // Password from Render
