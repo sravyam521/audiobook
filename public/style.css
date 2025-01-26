@@ -43,7 +43,6 @@ nav .suggestions{
 }
 
 #filterbtn{
-    padding-top: 0.5vh;
     border-radius: 20px;
     background-color: #365B6D;
     padding: 1vh;
@@ -69,7 +68,6 @@ nav .suggestions{
 
 .filters select{
     margin-left: 1vh;
-    padding-top: 0.5vh;
     border-radius: 20px;
     background-color: #365B6D;
     border: 1px solid #365B6D;
