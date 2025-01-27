@@ -104,6 +104,7 @@ nav .suggestions{
     width: 80%;
     margin: auto;
     margin-top: 1vh;
+    margin-bottom: 5vh;
 }
 
 .chapter{
@@ -128,7 +129,7 @@ option{
     margin-top: -1vh;
     width: 25%;
     right: 0;
-    position: fixed;
+    position: absolute;
     justify-content: center;
     padding: auto;
     text-align: center;
@@ -157,6 +158,7 @@ option{
     }
     .player{
         width: 100%;
+        position: fixed;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
         animation: animateplayer 1.3s;
