@@ -46,7 +46,7 @@ nav .suggestions{
 #filterbtn{
     border-radius: 20px;
     background-color: #365B6D;
-    height: 3vh;
+    padding: 3vh;
     padding-left: 2vh;
     padding-right: 2vh;
     border: none;
