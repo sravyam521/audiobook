@@ -92,37 +92,27 @@ async function loadChapters(bookId, bookDiv) {
     try {
         const response = await fetch(`/api/books/${bookId}/chapters`);
         const chapters = await response.json();
-        
-        let chaptersDiv = bookDiv.querySelector('.chapters');
-        
-        // If chaptersDiv doesn't exist, create it
-        if (!chaptersDiv) {
-            chaptersDiv = document.createElement('div');
-            chaptersDiv.className = 'chapters';
-            
-            chapters.forEach(chapter => {
-                const chapterDiv = document.createElement('div');
-                const hline = document.createElement('hr');
-                chapterDiv.className = 'chapter';
-                chapterDiv.textContent = `Chapter ${chapter.chapter_number}: ${chapter.chapter_name}`;
-                chapterDiv.onclick = (e) => {
-                    e.stopPropagation();
-                    playChapter(chapter.audio_link);
-                };
-                chaptersDiv.appendChild(chapterDiv);
-                chaptersDiv.appendChild(hline);
-            });
-            
-            bookDiv.appendChild(chaptersDiv);  // Append chaptersDiv if it was newly created
-        }
 
-        // Toggle chapters visibility
-        if (chaptersDiv.style.display === 'block') {
-            chaptersDiv.style.display = 'none';
-        } else {
-            chaptersDiv.style.display = 'block';
-        }
+        // Get the book image and chapters list containers
+        const bookImage = document.getElementById('bookImage');
+        const chaptersList = document.getElementById('chaptersList');
 
+        // Update the book image
+        const bookImageSrc = bookDiv.querySelector('img').src;
+        bookImage.src = bookImageSrc;
+        bookImage.style.display = 'block'; // Ensure the image is visible
+
+        // Clear previous chapters
+        chaptersList.innerHTML = '';
+
+        // Generate and populate the chapters
+        chapters.forEach(chapter => {
+            const chapterDiv = document.createElement('div');
+            chapterDiv.className = 'chapter';
+            chapterDiv.textContent = `Chapter ${chapter.chapter_number}: ${chapter.chapter_name}`;
+            chapterDiv.onclick = () => playChapter(chapter.audio_link); // Play chapter on click
+            chaptersList.appendChild(chapterDiv);
+        });
     } catch (error) {
         console.error('Error loading chapters:', error);
     }
