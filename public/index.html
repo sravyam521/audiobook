@@ -6,75 +6,69 @@
     <title>Audiobook Library</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
- 
+
 </head>
 <body>
     <header>
         <nav>
-            <div class="sravyam"><h1>Sravyam</h1></div>
+            <h1>Sravyam</h1>
             <div class="suggestions">Suggestions</div>
         </nav>
     </header>
     <div class="main">
-    <div class="player">
-        <div class="chapters-container">
-            <h3>Chapters</h3>
-            <div id="chaptersList"></div> <!-- Container for chapters -->
-        </div>
-        <div class="audio-player">
-            <audio id="audioPlayer" preload="metadata">
-                <source src="audio/chapter1.mp3" type="audio/mp3">
-            </audio>
-    
-            <div class="controls">
-                <button class="play-pause-btn" id="playPauseBtn">
+        <div class="player hidemobonly" id="player">
+            <div class="closebtn" onclick="closeplayer()">
+                close
+            </div>
+            <div class="audio-player">
+                <audio id="audioPlayer" preload="metadata">
+                  <source src="audio/chapter1.mp3" type="audio/mp3">
+                </audio>
+              
+                <div class="controls">
+                  <button class="play-pause-btn" id="playPauseBtn">
                     <i class="fa fa-play"></i>
-                </button>
-    
-                <div class="progress-container">
+                  </button>
+              
+                  <div class="progress-container">
                     <input type="range" class="progress-bar" id="progressBar" value="0" max="100">
-                </div>
-    
-                <!-- Current Time and Duration -->
-                <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
-    
-                <!-- Mute Button -->
-                <button class="mute-btn" id="muteBtn">
+                  </div>
+              
+                  <!-- Current Time and Duration -->
+                  <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+              
+                  <!-- Mute Button -->
+                  <button class="mute-btn" id="muteBtn">
                     <i class="fa fa-volume-up"></i>
-                </button>
+                  </button>
+                </div>
             </div>
         </div>
-
-    <div class="book-info">
-        <img id="bookImage" src="" alt="Book Cover" style="display: none;" />
-    </div>
-</div>
-
-        <div class="filtersearch">
-            <button id="filterbtn" onclick="togglefilters()">filters</button>
-            <div class="filters">
-                <select id="languageFilter">
-                    <option value="">Select Language</option>
-                    <!-- Options will be dynamically populated -->
-                </select>
-                <select id="subjectFilter">
-                    <option value="">Select Subject</option>
-                    <!-- Options will be dynamically populated -->
-                </select>
-                <select id="authorFilter">
-                    <option value="">Select Author</option>
-                    <!-- Options will be dynamically populated -->
-                </select>
+        <div class="maintwo">
+            <div class="filtersearch">
+                <button id="filterbtn" onclick="togglefilters()">filters</button>
+                <div class="filters hide" id = "filters">
+                    <select id="languageFilter">
+                        <option value="">Select Language</option>
+                        <!-- Options will be dynamically populated -->
+                    </select>
+                    <select id="subjectFilter">
+                        <option value="">Select Subject</option>
+                        <!-- Options will be dynamically populated -->
+                    </select>
+                    <select id="authorFilter">
+                        <option value="">Select Author</option>
+                        <!-- Options will be dynamically populated -->
+                    </select>
+                </div>
+                
+                <div class="search-bar">
+                    <input type="text" id="searchInput" placeholder="Search books..." />
+                </div>
             </div>
-            
-            <div class="search-bar">
-                <input type="text" id="searchInput" placeholder="Search books..." />
-                <i class="fa fa-search"></i> <!-- Search icon -->
+            <div class="container"></div>
+        
             </div>
-        </div>
-        
-        <div class="container"></div>
-        
         </div>
         
         
