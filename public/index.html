@@ -16,6 +16,41 @@
         </nav>
     </header>
     <div class="main">
+        <div class="player">
+    <div class="audio-player">
+        <audio id="audioPlayer" preload="metadata">
+            <source src="audio/chapter1.mp3" type="audio/mp3">
+        </audio>
+
+        <div class="controls">
+            <button class="play-pause-btn" id="playPauseBtn">
+                <i class="fa fa-play"></i>
+            </button>
+
+            <div class="progress-container">
+                <input type="range" class="progress-bar" id="progressBar" value="0" max="100">
+            </div>
+
+            <!-- Current Time and Duration -->
+            <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+
+            <!-- Mute Button -->
+            <button class="mute-btn" id="muteBtn">
+                <i class="fa fa-volume-up"></i>
+            </button>
+        </div>
+    </div>
+
+    <div class="book-info">
+        <img id="bookImage" src="" alt="Book Cover" style="display: none;" />
+    </div>
+
+    <div class="chapters-container">
+        <h3>Chapters</h3>
+        <div id="chaptersList"></div> <!-- Container for chapters -->
+    </div>
+</div>
+
         <div class="filtersearch">
             <button id="filterbtn" onclick="togglefilters()">filters</button>
             <div class="filters">
@@ -44,31 +79,6 @@
         </div>
         
         
-        </div>
-        <div class="currentplay">
-            <div class="audio-player">
-                <audio id="audioPlayer" preload="metadata">
-                  <source src="audio/chapter1.mp3" type="audio/mp3">
-                </audio>
-              
-                <div class="controls">
-                  <button class="play-pause-btn" id="playPauseBtn">
-                    <i class="fa fa-play"></i>
-                  </button>
-              
-                  <div class="progress-container">
-                    <input type="range" class="progress-bar" id="progressBar" value="0" max="100">
-                  </div>
-              
-                  <!-- Current Time and Duration -->
-                  <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
-              
-                  <!-- Mute Button -->
-                  <button class="mute-btn" id="muteBtn">
-                    <i class="fa fa-volume-up"></i>
-                  </button>
-                </div>
-            </div>
         </div>
     </div>
     <div id="suggestionBox">
