@@ -50,7 +50,7 @@ nav .suggestions{
     padding-left: 2vh;
     padding-right: 2vh;
     border: none;
-    alighn-items: center;
+    align-items: center;
 }
 
 @media (max-width: 768px){
