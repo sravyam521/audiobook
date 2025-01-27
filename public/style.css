@@ -46,12 +46,18 @@ nav .suggestions{
 #filterbtn{
     border-radius: 20px;
     background-color: #365B6D;
-    padding: 3vh;
+    height: 3vh;
     padding-left: 2vh;
     padding-right: 2vh;
     border: none;
     alighn-items: center;
 }
+
+@media (max-width: 768px){
+    #filterbtn{
+        height: auto;
+        padding: 1vh;
+    }
 
 .hide{
     display: none;
