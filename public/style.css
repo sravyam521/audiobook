@@ -298,3 +298,30 @@ option{
     color: #6C9286; /* Muted green */
   }
 
+#suggestionBox{
+    background-color: #eaddbe;
+    width: 50vh;
+    margin: auto;
+  }
+
+  #suggestionHeader{
+    color: #ddd;
+    text-align: center;
+    font-size: 20pt;
+    background-color: #6C9286;
+  }
+
+  #suggestionContent *{
+    color: #365B6D;
+  }
+
+
+  #submittedSuggestions{
+    padding: 1vh;
+  }
+
+  #submittedSuggestions p{
+    display: flex;
+    justify-content: space-between;
+    line-height: 3vh;
+  }
