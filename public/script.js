@@ -189,6 +189,14 @@ async function fetchSuggestions() {
     }
 }
 
+function  toggleSuggestions(){
+    suggestion = document.getElementById('suggestionBox');
+    suggestion.classList.toggle('hide');
+    document.getElementById('container').classList.toggle('blur');
+    document.getElementById('filsear').classList.toggle('blur');
+    document.getElementById('suggestionbtn').innerHTML = suggestion.classList.contains('hide')? "suggestions":"close suggestions";
+}
+
 document.getElementById('submitSuggestion').addEventListener('click', async () => {
     const suggestionInput = document.getElementById('suggestionInput');
     const commentText = suggestionInput.value.trim();
