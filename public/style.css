@@ -82,12 +82,16 @@ nav .suggestions{
 .container{
     display: flex;
     flex-wrap: wrap;
-    margin: auto;
 }
 
 .book{
     margin-left: 3vh;
     margin-top: 2vh;
+}
+
+.book h2{
+    color: #365B6D;
+    font-size: 15pt;
 }
 
 .book img{
@@ -124,15 +128,6 @@ nav .suggestions{
 .chapters-container h3{
     color: #6C9286;
 }
-
-option{
-}
-
-.currentplay{
-    
-}
-
-
 
 .player{
     background-color:#eaddbe;
