@@ -167,7 +167,7 @@ nav .suggestions{
         display: grid;
     }
     .player{
-        height: calc(100% - 5vh)
+        height: calc(100% - 5vh);
         width: 100%;
         position: fixed;
         border-top-left-radius: 20px;
