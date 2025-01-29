@@ -135,7 +135,7 @@ nav .suggestions{
     margin-top: -1vh;
     width: 25%;
     right: 0;
-    position: absolute;
+    position: relative;
     justify-content: center;
     padding: auto;
     text-align: center;
