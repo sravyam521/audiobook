@@ -131,7 +131,6 @@ nav .suggestions{
 
 .player{
     background-color:#eaddbe;
-    height: calc(100% - 5vh);
     margin-top: -1vh;
     width: 25%;
     right: 0;
