@@ -1,4 +1,3 @@
-// Load filters for language, subject, and author
 async function loadFilters() {
     try {
         const response = await fetch('/api/filters');
@@ -35,97 +34,110 @@ async function loadFilters() {
     }
 }
 
-function togglefilters(){
-    filt = document.getElementById('filters');
-    filt.classList.toggle('hide');
-}
-
-// Load books and display them
 async function loadBooks() {
     try {
         const response = await fetch('/api/books');
         const books = await response.json();
-        displayBooks(books);
+        displayBooks(books); // Function to display books based on filters
     } catch (error) {
         console.error('Error loading books:', error);
     }
 }
 
-// Display books with filters and search
 function displayBooks(books) {
     const container = document.querySelector('.container');
     container.innerHTML = ''; // Clear previous content
 
-    books.forEach(book => {
+    // Get the filter and search input values
+    const searchQuery = document.getElementById('searchInput').value.toLowerCase();
+    const selectedLanguage = document.getElementById('languageFilter').value;
+    const selectedSubject = document.getElementById('subjectFilter').value;
+    const selectedAuthor = document.getElementById('authorFilter').value;
+
+    // Filter books based on search and selected filters
+    const filteredBooks = books.filter(book => {
+        const matchesSearch = book.name.toLowerCase().includes(searchQuery);
+        const matchesLanguage = selectedLanguage ? book.language === selectedLanguage : true;
+        const matchesSubject = selectedSubject ? book.subject === selectedSubject : true;
+        const matchesAuthor = selectedAuthor ? book.author === selectedAuthor : true;
+
+        return matchesSearch && matchesLanguage && matchesSubject && matchesAuthor;
+    });
+
+    // Display filtered books
+    filteredBooks.forEach(book => {
         const bookDiv = document.createElement('div');
         bookDiv.className = 'book';
         bookDiv.innerHTML = `
             <img src="${book.image_link}" alt="${book.name}">
             <h2>${book.name}</h2>
         `;
-        bookDiv.onclick = () => loadChapters(book.book_id, book.image_link); // Pass book image as well
+        bookDiv.onclick = () => loadChapters(book.book_id, bookDiv);
         container.appendChild(bookDiv);
     });
 }
 
-// Load chapters for a specific book
-async function loadChapters(bookId, bookImage) {
+// Event listeners for filter changes and search input
+document.getElementById('searchInput').addEventListener('input', () => loadBooks());
+document.getElementById('languageFilter').addEventListener('change', () => loadBooks());
+document.getElementById('subjectFilter').addEventListener('change', () => loadBooks());
+document.getElementById('authorFilter').addEventListener('change', () => loadBooks());
+
+// Initialize the filters and load books
+loadFilters();
+loadBooks();
+
+
+async function loadChapters(bookId, bookDiv) {
     try {
         const response = await fetch(`/api/books/${bookId}/chapters`);
         const chapters = await response.json();
-
-        // Update book image in the player
-        const playerDiv = document.querySelector('.player');
-        let bookImageContainer = playerDiv.querySelector('.book-image');
-
-        if (!bookImageContainer) {
-            bookImageContainer = document.createElement('div');
-            bookImageContainer.className = 'book-image';
-            playerDiv.insertBefore(bookImageContainer, playerDiv.firstChild);
+        
+        let chaptersDiv = bookDiv.querySelector('.chapters');
+        
+        // If chaptersDiv doesn't exist, create it
+        if (!chaptersDiv) {
+            chaptersDiv = document.createElement('div');
+            chaptersDiv.className = 'chapters';
+            
+            chapters.forEach(chapter => {
+                const chapterDiv = document.createElement('div');
+                const hline = document.createElement('hr');
+                chapterDiv.className = 'chapter';
+                chapterDiv.textContent = `Chapter ${chapter.chapter_number}: ${chapter.chapter_name}`;
+                chapterDiv.onclick = (e) => {
+                    e.stopPropagation();
+                    playChapter(chapter.audio_link);
+                };
+                chaptersDiv.appendChild(chapterDiv);
+                chaptersDiv.appendChild(hline);
+            });
+            
+            bookDiv.appendChild(chaptersDiv);  // Append chaptersDiv if it was newly created
         }
 
-        bookImageContainer.innerHTML = `<img src="${bookImage}" alt="Book Cover" />`;
-
-        // Find or create the chapters container
-        let chaptersContainer = playerDiv.querySelector('.chapters-container');
-
-        if (!chaptersContainer) {
-            chaptersContainer = document.createElement('div');
-            chaptersContainer.className = 'chapters-container';
-            playerDiv.appendChild(chaptersContainer);
+        // Toggle chapters visibility
+        if (chaptersDiv.style.display === 'block') {
+            chaptersDiv.style.display = 'none';
+        } else {
+            chaptersDiv.style.display = 'block';
         }
 
-        // Clear previous chapters
-        chaptersContainer.innerHTML = `<h3>Chapters</h3>`;
-
-        // Add chapters to the container
-        chapters.forEach(chapter => {
-            const chapterDiv = document.createElement('div');
-            chapterDiv.className = 'chapter';
-            chapterDiv.textContent = `Chapter ${chapter.chapter_number}: ${chapter.chapter_name}`;
-            chapterDiv.onclick = () => playChapter(chapter.audio_link);
-            chaptersContainer.appendChild(chapterDiv);
-        });
-        const player = document.getElementById('player');
-        player.classList.toggle('hidemobonly')
     } catch (error) {
         console.error('Error loading chapters:', error);
     }
 }
 
-function closeplayer(){
-    const player = document.getElementById('player');
-    player.classList.toggle('hidemobonly')
-}
 
-// Play audio for a selected chapter
 function playChapter(audioSrc) {
     const audioPlayer = document.getElementById('audioPlayer');
     audioPlayer.src = audioSrc;
     audioPlayer.play();
 }
 
-// Audio player controls
+loadBooks();
+
+//audio
 const audioPlayer = document.getElementById('audioPlayer');
 const playPauseBtn = document.getElementById('playPauseBtn');
 const progressBar = document.getElementById('progressBar');
@@ -135,66 +147,76 @@ const muteBtn = document.getElementById('muteBtn');
 
 // Play / Pause functionality
 playPauseBtn.addEventListener('click', () => {
-    if (audioPlayer.paused) {
-        audioPlayer.play();
-    } else {
-        audioPlayer.pause();
-    }
+  if (audioPlayer.paused) {
+    audioPlayer.play(); // Start playing audio
+  } else {
+    audioPlayer.pause(); // Pause the audio
+  }
 });
 
+// Update the play/pause button when the audio starts or pauses
 audioPlayer.addEventListener('play', () => {
-    playPauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
+  playPauseBtn.innerHTML = '<i class="fa fa-pause"></i>';
 });
 
 audioPlayer.addEventListener('pause', () => {
-    playPauseBtn.innerHTML = '<i class="fa fa-play"></i>';
+  playPauseBtn.innerHTML = '<i class="fa fa-play"></i>';
 });
 
+// Update progress bar and time display as the audio plays
 audioPlayer.addEventListener('timeupdate', () => {
-    const currentTime = audioPlayer.currentTime;
-    const duration = audioPlayer.duration;
+  const currentTime = audioPlayer.currentTime;
+  const duration = audioPlayer.duration;
 
-    progressBar.value = (currentTime / duration) * 100;
-    currentTimeDisplay.textContent = formatTime(currentTime);
-    durationDisplay.textContent = formatTime(duration);
+  // Update progress bar
+  const progress = (currentTime / duration) * 100;
+  progressBar.value = progress;
+
+  // Update current time display
+  currentTimeDisplay.textContent = formatTime(currentTime);
+  
+  // Update duration display
+  durationDisplay.textContent = formatTime(duration);
 });
 
+// Seek functionality on progress bar click
 progressBar.addEventListener('input', () => {
-    const seekTime = (progressBar.value / 100) * audioPlayer.duration;
-    audioPlayer.currentTime = seekTime;
+  const seekTime = (progressBar.value / 100) * audioPlayer.duration;
+  audioPlayer.currentTime = seekTime;
 });
 
+// Mute / Unmute functionality
 muteBtn.addEventListener('click', () => {
-    audioPlayer.muted = !audioPlayer.muted;
-    muteBtn.innerHTML = audioPlayer.muted ? '<i class="fa fa-volume-mute"></i>' : '<i class="fa fa-volume-up"></i>';
+  if (audioPlayer.muted) {
+    audioPlayer.muted = false;
+    muteBtn.innerHTML = '<i class="fa fa-volume-up"></i>';
+  } else {
+    audioPlayer.muted = true;
+    muteBtn.innerHTML = '<i class="fa fa-volume-mute"></i>';
+  }
 });
 
+// Format time in minutes:seconds
 function formatTime(seconds) {
-    const minutes = Math.floor(seconds / 60);
-    const secs = Math.floor(seconds % 60);
-    return `${minutes}:${secs < 10 ? '0' + secs : secs}`;
+  const minutes = Math.floor(seconds / 60);
+  const secs = Math.floor(seconds % 60);
+  return `${minutes}:${secs < 10 ? '0' + secs : secs}`;
 }
 
-// Suggestion handling
+document.getElementById('suggestionHeader').addEventListener('click', () => {
+    const suggestionContent = document.getElementById('suggestionContent');
+    suggestionContent.style.display = suggestionContent.style.display === 'block' ? 'none' : 'block';
+});
+
 async function fetchSuggestions() {
     try {
         const response = await fetch('/api/suggestions');
         const suggestions = await response.json();
         const suggestionsContainer = document.getElementById('submittedSuggestions');
-        suggestionsContainer.innerHTML = suggestions.map(s => `
-            <p>${s.comment_text} - <small>${new Date(s.created_at).toLocaleString()}</small></p>
-        `).join('');
+        suggestionsContainer.innerHTML = suggestions.map(s => `<p>${s.comment_text} - <small>${new Date(s.created_at).toLocaleString()}</small></p>`).join('');
     } catch (error) {
         console.error('Error fetching suggestions:', error);
     }
-}
-
-function  toggleSuggestions(){
-    suggestion = document.getElementById('suggestionBox');
-    suggestion.classList.toggle('hide');
-    document.getElementById('container').classList.toggle('blur');
-    document.getElementById('filsear').classList.toggle('blur');
-    document.getElementById('suggestionbtn').innerHTML = suggestion.classList.contains('hide')? "suggestions":"close suggestions";
 }
 
 document.getElementById('submitSuggestion').addEventListener('click', async () => {
@@ -223,7 +245,6 @@ document.getElementById('submitSuggestion').addEventListener('click', async () =
     }
 });
 
-// Initialize the filters, books, and suggestions
-loadFilters();
-loadBooks();
+// Load suggestions when the page loads
 fetchSuggestions();
+
