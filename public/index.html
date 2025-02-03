@@ -11,70 +11,63 @@
 <body>
     <header>
         <nav>
-            <h1>Sravyam</h1>
-            <div id="suggestionbtn" class="suggestions" onclick="toggleSuggestions()">suggestions</div>
+            
         </nav>
+        <h1>NSS Audiobook</h1>
     </header>
     <div class="main">
-        <div class="player hidemobonly" id="player">
-            <div class="closebtn" onclick="closeplayer()">
-                close
+        <div class="filtersearch">
+            <div class="filters">
+                <select id="languageFilter">
+                    <option value="">Select Language</option>
+                    <!-- Options will be dynamically populated -->
+                </select>
+                <select id="subjectFilter">
+                    <option value="">Select Subject</option>
+                    <!-- Options will be dynamically populated -->
+                </select>
+                <select id="authorFilter">
+                    <option value="">Select Author</option>
+                    <!-- Options will be dynamically populated -->
+                </select>
             </div>
-            <div class="audio-player">
-                <audio id="audioPlayer" preload="metadata">
-                  <source src="audio/chapter1.mp3" type="audio/mp3">
-                </audio>
-              
-                <div class="controls">
-                  <button class="play-pause-btn" id="playPauseBtn">
-                    <i class="fa fa-play"></i>
-                  </button>
-              
-                  <div class="progress-container">
-                    <input type="range" class="progress-bar" id="progressBar" value="0" max="100">
-                  </div>
-              
-                  <!-- Current Time and Duration -->
-                  <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
-              
-                  <!-- Mute Button -->
-                  <button class="mute-btn" id="muteBtn">
-                    <i class="fa fa-volume-up"></i>
-                  </button>
-                </div>
+            
+            <div class="search-bar">
+                <input type="text" id="searchInput" placeholder="Search books..." />
+                <i class="fa fa-search"></i> <!-- Search icon -->
             </div>
         </div>
-        <div class="maintwo">
-            <div class="filtersearch" id="filsear">
-                <button id="filterbtn" onclick="togglefilters()">filters</button>
-                <div class="filters hide" id = "filters">
-                    <select id="languageFilter">
-                        <option value="">Select Language</option>
-                        <!-- Options will be dynamically populated -->
-                    </select>
-                    <select id="subjectFilter">
-                        <option value="">Select Subject</option>
-                        <!-- Options will be dynamically populated -->
-                    </select>
-                    <select id="authorFilter">
-                        <option value="">Select Author</option>
-                        <!-- Options will be dynamically populated -->
-                    </select>
-                </div>
-                
-                <div class="search-bar">
-                    <input type="text" id="searchInput" placeholder="Search books..." />
-                </div>
-            </div>
-            <div class="container" id="container"></div>
         
-            </div>
+        <div class="container"></div>
         </div>
         
         
         </div>
+        <div class="audio-player">
+            <audio id="audioPlayer" preload="metadata">
+              <source src="audio/chapter1.mp3" type="audio/mp3">
+            </audio>
+          
+            <div class="controls">
+              <button class="play-pause-btn" id="playPauseBtn">
+                <i class="fa fa-play"></i>
+              </button>
+              
+              <div class="progress-container">
+                <input type="range" class="progress-bar" id="progressBar" value="0" max="100">
+              </div>
+              
+              <!-- Current Time and Duration -->
+              <span id="currentTime">0:00</span> / <span id="duration">0:00</span>
+          
+              <!-- Mute Button -->
+              <button class="mute-btn" id="muteBtn">
+                <i class="fa fa-volume-up"></i>
+              </button>
+            </div>
+          </div>
     </div>
-    <div id="suggestionBox" class="hide">
+    <div id="suggestionBox">
         <div id="suggestionHeader">Suggestions</div>
         <div id="suggestionContent">
             <div id="submittedSuggestions"></div>
