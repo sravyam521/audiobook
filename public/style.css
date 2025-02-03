@@ -1,323 +1,512 @@
-*{
-    margin: 0;
-    color: #fff;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-}
-
-body{
-    margin: 0;
-    background-color: #F2F1EC;
-}
-
-.header{
-    width: 100%;
-    background-color: #365B6D;
-}
-nav{
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    background-color: #365B6D;
-    padding: 1vh;
-    padding-left: 2vh;
+/* Universal Box Sizing */
+*, *::before, *::after {
     box-sizing: border-box;
 }
 
-nav .suggestions{
-    padding-top: 0.5vh;
-    border-radius: 20px;
-    background-color: #6C9286;
-    padding-left: 2vh;
-    padding-right: 2vh;
+/* Reset margin and padding for all elements */
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+/* Body styling */
+body {
+    background-color: #f4f4f9; /* Set background color */
 }
 
 .main{
-    margin-top: 1vh;
-    width: 100%;
-    position: relative;
+    margin: 0;
+}
+
+.container {
     display: flex;
+    flex-wrap: wrap; /* Allows items to wrap to the next row if needed */
+    overflow: auto; /* Adds a scrollbar if the content overflows */
+    align-items: baseline;
+    gap: 1vh; /* Adds spacing between items */
+    padding: 5px;
+    margin-bottom: 10vh;
 }
 
-.filtersearch{
-    display: flex;
-    margin-left: 2vh;
-}
 
-#filterbtn{
-    border-radius: 20px;
-    background-color: #365B6D;
-    height: 3vh;
-    padding-left: 2vh;
-    padding-right: 2vh;
-    border: none;
-    align-items: center;
-}
-
-.hide{
-    display: none;
-}
-
-.search-bar input{
-    margin-left: 1vh;
-    padding-top: 0.5vh;
-    border-radius: 20px;
-    background-color: #f5f5f5;
-    height: 3vh;
-    padding-left: 2vh;
-    padding-right: 2vh;
-    border: 1px solid #365B6D;
-}
-
-.filters select{
-    margin-left: 1vh;
-    border-radius: 20px;
-    background-color: #365B6D;
-    border: 1px solid #365B6D;
-    height: 3vh;
-    padding-left: 2vh;
-    padding-right: 2vh;
-    appearance: none;
-}
-
-.container{
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.book{
-    margin-left: 3vh;
-    margin-top: 2vh;
-}
-
-.book h2{
-    color: #365B6D;
-    font-size: 15pt;
-}
-
-.book img{
-    height: 18vh;
-    width: 18vh;
-}
-
-.book-image{
-    margin: auto;
-    margin-top: 10vh;
-}
-
-.book-image img{
-    width: 80%;
-    height: 80%;
-}
-
-.chapters-container{
-    text-align: left;
-    width: 80%;
-    margin: auto;
-    margin-top: 1vh;
-    margin-bottom: 50vh;
-    padding-bottom: 40vh;
-}
-
-.chapter{
-    text-align: left;
-    border: 2px solid #365B6D;
-    margin-top: 1vh;
-    padding: 1vh;
-    color: #6C9286;
-}
-
-.chapters-container h3{
-    color: #6C9286;
-}
-
-.player{
-    background-color:#eaddbe;
-    margin-top: -1vh;
-    width: 30%;
-    right: 0;
-    position: absolute;
-    justify-content: center;
-    padding: auto;
+/* Header styling */
+header {
+    background-color: #004084;
+    color: white;
     text-align: center;
-    overflow: scroll;
+    padding: 1rem;
+    width: 100%; /* Ensure it takes up full width */
+    box-sizing: border-box; /* Includes padding in the width calculation */
+    position: relative; /* Prevents it from being affected by surrounding elements */
 }
 
-.closebtn{
-    display: none;
+/* Book Container */
+.book {
+    width: 200px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s;
+    flex-shrink: 0; /* Prevent shrinking */
+}
+
+.book:hover {
+    transform: translateY(-5px);
+}
+
+.book img {
     width: 100%;
-    height: 5vh;
-    padding: 1vh;
-    background-color: #ffffff;
-    border-top-left-radius: 20px;
-    border-top-right-radius: 20px;
-    box-sizing: border-box;
-    align-items: center;
-    border: 1px solid #6C9286;
-    color: #6C9286;
-    top: 0;
-    position: absolute;
+    height: 200px;
+    border-top-left-radius: 8px;
+    border-top-right-radius: 8px;
 }
 
-.blur{
-    filter: blur(5px);
+.book h2 {
+    font-size: 1rem;
+    margin: 0.5rem 0;
+    padding: 0 0.5rem;
 }
 
-@media (max-width: 768px){
-    .main{
-        display: grid;
-    }
-    .player{
-        height: calc(100% - 5vh);
-        width: 100%;
-        position: fixed;
-        border-top-left-radius: 20px;
-        border-top-right-radius: 20px;
-        animation: animateplayer 1.3s;
-    }
-    .closebtn{
-        display: grid;
-    }
-    .hidemobonly{
-        display: none;
-    }
-        #suggestionBox{
-        min-width: 100%;
-        min-height: 100%;
-        animation: animateplayer 1.3s;
-    }
-
-    .book{
-        margin: auto;
-        margin-top: 2vh;
-    }
-
-    @keyframes animateplayer {
-        0%{
-            transform: translateY(1000px);
-        }
-        100%{
-            transform: translateY(0px);
-        }
-    }
+.chapters {
+    margin: 0.5rem;
+    display: none;
 }
 
-/* audio contros */
+.chapter {
+    padding: 0.5rem 0;
+    font-size: 0.9rem;
+    color: #007bff;
+    cursor: pointer;
+    text-align: left;
+}
+
+.chapter:hover {
+    background-color: #ddd;
+}
 
 /* Audio Player Container */
 .audio-player {
-    background-color: #f5f5f5; /* Light grey background */
-    border-radius: 8px;
-    padding: 10px;
-    width: 100%;
-    margin: auto;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     position: fixed;
     bottom: 0;
-    box-sizing: border-box;
-  }
-
-  /* Control Container */
-  .controls {
+    width: 100%;
+    background-color: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
     display: flex;
     align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+    box-sizing: border-box; /* Ensures padding and borders are included in width */
+}
+
+/* Controls */
+.controls {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    margin-top: 15px;
     justify-content: space-between;
-    font-family: Arial, sans-serif;
-  }
+    color: #fff;
+}
 
-  /* Play/Pause Button */
-  .play-pause-btn {
-    background-color: #365B6D; /* Dark teal */
-    color: white;
+/* Play/Pause Button */
+.play-pause-btn {
+    background: none;
     border: none;
-    padding: 10px;
-    border-radius: 4px;
+    color: #fff;
+    font-size: 24px;
     cursor: pointer;
-  }
+    transition: transform 0.3s ease;
+}
 
-  .play-pause-btn:hover {
-    background-color: #6C9286; /* Muted green */
-  }
+.play-pause-btn:hover {
+    transform: scale(1.2);
+}
 
-  /* Progress Bar */
-  .progress-container {
+/* Progress Bar */
+.progress-container {
     flex-grow: 1;
     margin: 0 10px;
-  }
+}
 
-  .progress-bar {
+.progress-bar {
     width: 100%;
-    -webkit-appearance: none;
-    appearance: none;
+    background: #555;
+    border-radius: 5px;
     height: 5px;
-    background-color: #ddd;
+    appearance: none;
+}
+
+.progress-bar::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.progress-bar::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: #ffffff;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Add space between the time and mute button */
+.controls span {
+    color: #fff;
+    font-size: 14px;
+    margin: 0 5px;
+}
+
+/* Mute Button */
+.mute-btn {
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.mute-btn:hover {
+    transform: scale(1.2);
+}
+
+/* Search */
+
+.filtersearch{
+    display: flex;
+    background-color: #004084;
+}
+
+/* Search Bar */
+
+.search-bar {
+    margin: 20px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ddd;
+    height: 50px; /* Set a height for the search bar container */
+    border-radius: 20px;
+    margin-right: 3vh;
+}
+
+#searchInput {
+    height: 100%;
+    width: 100%;
+    padding: 0 10px;
+    outline: none;
+    box-sizing: border-box;
+    font-size: 16px;
+    margin: 0;
+    vertical-align: middle;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+
+#searchInput:focus {
+    border-color: #002366;
+}
+
+/* Search icon inside the search bar */
+.search-bar i {
+    color: #aaa;
+    height: 100%;
+    padding: 1.5vh;
+    cursor: pointer;
+}
+
+/* Filters container styling */
+.filters {
+    display: flex;
+    gap: 9px;
+}
+
+/* Filter dropdowns */
+/* Base Dropdown Styling */
+select {
+    appearance: none; /* Remove default browser dropdown styling */
+    padding: 12px 19px;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    font-size: 16px;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23333' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+}
+
+/* Dropdown Options Styling */
+select option {
+    padding: 10px;
+    background-color: #fff;
+    color: #333;
+}
+
+/* On Focus */
+select:focus {
+    border-color: #007BFF; /* Highlight border on focus */
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+
+/* Dropdown Resetting for Compatibility */
+select {
+    position: relative;
+    z-index: 1; /* Ensure dropdown options appear above content */
+}
+
+
+
+
+/* Filter labels */
+label {
+    font-size: 16px;
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.filters, .search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
+
+/* Upload */
+.upload-container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 400px;
+}
+
+h1 {
+    text-align: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="number"],
+input[type="file"] {
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+button {
+    background-color: #007bff;
+    color: white;
+    padding: 10px;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
-  }
+}
 
-  .progress-bar::-webkit-slider-thumb {
-    -webkit-appearance: none;
-    appearance: none;
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
-    background-color: #365B6D;
-    cursor: pointer;
-  }
+button:hover {
+    background-color: #0056b3;
+}
 
-  .progress-bar::-moz-range-thumb {
-    height: 12px;
-    width: 12px;
-    border-radius: 50%;
-    background-color: #365B6D;
-    cursor: pointer;
-  }
 
-  /* Time and Duration */
-  #currentTime, #duration {
-    color: #6C9286; /* Muted green */
-    font-size: 14px;
-  }
+#suggestionBox {
+    position: fixed;
+    bottom: 92px;
+    right: 20px;
+    width: 300px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    z-index: 1000;
+}
 
-  /* Mute Button */
-  .mute-btn {
-    background-color: transparent;
-    border: none;
-    cursor: pointer;
-  }
-
-  .mute-btn i {
-    color: #365B6D; /* Dark teal */
-    font-size: 18px;
-  }
-
-  .mute-btn:hover i {
-    color: #6C9286; /* Muted green */
-  }
-
-#suggestionBox{
-    background-color: #eaddbe;
-    width: 50vh;
-    margin: auto;
-  }
-
-  #suggestionHeader{
-    color: #ddd;
+#suggestionHeader {
+    padding: 10px;
+    background-color: #002366;
+    color: white;
+    border-radius: 8px 8px 0 0;
+    font-size: 16px;
     text-align: center;
-    font-size: 20pt;
-    background-color: #6C9286;
-  }
+    cursor: pointer;
+}
 
-  #suggestionContent *{
-    color: #365B6D;
-  }
+#suggestionContent {
+    display: none;
+    padding: 10px;
+}
 
+#submittedSuggestions {
+    max-height: 150px;
+    overflow-y: auto;
+    margin-bottom: 10px;
+}
 
-  #submittedSuggestions{
-    padding: 1vh;
-  }
+#suggestionInput {
+    width: 100%;
+    height: 60px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    font-size: 14px;
+}
 
-  #submittedSuggestions p{
+#submitSuggestion {
+    width: 100%;
+    padding: 8px;
+    background-color: #004084;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+#submitSuggestion:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media (max-width: 740px) {
+    header h1 {
+        font-size: 1.2rem;
+    }
+    .filtersearch{
+        display: grid;
+        background-color: #004084;
+    }
+    .search-bar {
+        margin: 20px 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 0px solid #ddd;
+        height: 50px; /* Set a height for the search bar container */
+        border-radius: 20px;
+        margin-right: 3vh;
+    }
+    #searchInput {
+        height: 80%;
+        width: 80%;
+        padding: 0 9px;
+        outline: none;
+        box-sizing: border-box;
+        font-size: 12px;
+        margin: 0;
+        vertical-align: middle;
+        border-top-left-radius: 20px;
+        border-bottom-left-radius: 20px;
+    }
+    .book {
+        width: 120px;
+    }
+
+    .book img {
+        height: 120px;
+    }
+    #suggestionBox {
+        position: fixed;
+        bottom: 73px;
+        right: 20px;
+        width: 250px;
+        border: 1px solid #ccc;
+        border-radius: 8px;
+        background-color: #f9f9f9;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        font-family: Arial, sans-serif;
+        z-index: 1000;
+    }
+    .audio-player {
+        position: fixed;
+        bottom: 0;
+        width: 100%;
+        height: 10%;
+        background-color: #1e1e1e;
+        padding: 15px;
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        box-sizing: border-box; /* Ensures padding and borders are included in width */
+    }
+    label {
+        font-size: 12px;
+        font-weight: bold;
+        margin-right: 10px;
+    }
+    
+    .filters, .search-bar {
+        display: flex;
+        margin:auto;
+        justify-content: center;
+        align-items: center;
+        width: 70%;
+    }
+    
+/* Filters container styling */
+.filters {
     display: flex;
-    justify-content: space-between;
-    line-height: 3vh;
-  }
+    gap: 9px;
+}
+
+/* Filter dropdowns */
+/* Base Dropdown Styling */
+select {
+    appearance: none; /* Remove default browser dropdown styling */
+    padding: 10px 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+    font-size: 12px;
+    color: #333;
+    outline: none;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='10' viewBox='0 0 14 10'%3E%3Cpath d='M1 1l6 6 6-6' stroke='%23333' fill='none' stroke-width='2'/%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 7px;
+}
+
+/* Dropdown Options Styling */
+select option {
+    padding: 5px;
+    background-color: #fff;
+    color: #333;
+}
+}
+
+
+
+
+
