@@ -11,7 +11,7 @@ async function loadFilters() {
             option.textContent = language;
             languageFilter.appendChild(option);
         });
-
+        
         // Populate subject filter
         const subjectFilter = document.getElementById('subjectFilter');
         filters.subjects.forEach(subject => {
