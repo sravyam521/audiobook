@@ -337,11 +337,9 @@ button:hover {
 
 #suggestionBox {
     position: fixed;
-    top: 75%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 700px;
-    max-width: 90%;
+    bottom: 120px;
+    right: 20px;
+    width: 300px;
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #f9f9f9;
