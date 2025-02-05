@@ -350,14 +350,7 @@ button:hover {
     z-index: 1000;
 }
 
-/* Responsive Design */
-@media (max-width: 600px) {
-    #suggestionBox {
-        width: 100%;
-        max-width: 320px;
-        padding: 10px;
-    }
-}
+
 #suggestionHeader {
     padding: 10px;
     background-color: #002366;
