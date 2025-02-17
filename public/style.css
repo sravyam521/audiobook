@@ -33,12 +33,40 @@ body {
 /* Header styling */
 header {
     background-color: #004084;
+    height: 135px;
     color: white;
     text-align: center;
     padding: 1rem;
     width: 100%; /* Ensure it takes up full width */
     box-sizing: border-box; /* Includes padding in the width calculation */
     position: relative; /* Prevents it from being affected by surrounding elements */
+}
+h1 {
+    text-align: center;
+    flex-grow: 1;
+    position: relative;
+}
+
+
+.logo {
+    height: 100px; /* Adjust size as needed */
+}
+
+.left-logo {
+    position: absolute;
+    left: 20px;
+}
+
+.center-logo {
+    height: 85px;
+    vertical-align: middle;
+    margin-right: 10px;
+}
+
+.right-logo {
+    position: absolute;
+    right: 20px;
+    top: 20px;
 }
 
 /* Book Container */
@@ -337,8 +365,8 @@ button:hover {
 
 #suggestionBox {
     position: fixed;
-    bottom: 120px;
-    right: 20px;
+    bottom: 140px;
+    right: 30px;
     width: 300px;
     border: 1px solid #ccc;
     border-radius: 8px;
@@ -347,7 +375,6 @@ button:hover {
     font-family: Arial, sans-serif;
     z-index: 1000;
 }
-
 
 #suggestionHeader {
     padding: 10px;
@@ -365,14 +392,14 @@ button:hover {
 }
 
 #submittedSuggestions {
-    max-height: 150px;
+    max-height: 170px;
     overflow-y: auto;
     margin-bottom: 10px;
 }
 
 #suggestionInput {
     width: 100%;
-    height: 60px;
+    height: 110px;
     margin-bottom: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -435,8 +462,9 @@ button:hover {
     }
     #suggestionBox {
         position: fixed;
-        bottom: 73px;
-        right: 20px;
+        bottom: 70px;
+        height: 40px;
+        right: 30px;
         width: 250px;
         border: 1px solid #ccc;
         border-radius: 8px;
@@ -445,6 +473,7 @@ button:hover {
         font-family: Arial, sans-serif;
         z-index: 1000;
     }
+    
     .audio-player {
         position: fixed;
         bottom: 0;
@@ -506,7 +535,6 @@ select option {
     color: #333;
 }
 }
-
 
 
 
