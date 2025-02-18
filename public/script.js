@@ -205,7 +205,10 @@ function formatTime(seconds) {
 
 document.getElementById('suggestionHeader').addEventListener('click', () => {
     const suggestionContent = document.getElementById('suggestionContent');
+    const bo = document.getElementById('suggestionBox');
+
     suggestionContent.style.display = suggestionContent.style.display === 'block' ? 'none' : 'block';
+    bo.style.bottom = bo.style.bottom === '20vh' ? '70px' : '20vh';
 });
 
 async function fetchSuggestions() {
