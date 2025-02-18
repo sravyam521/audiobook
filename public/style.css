@@ -560,6 +560,11 @@ select option {
 }
 .logo {
     height: 70px; /* Adjust size as needed */
+    margin: auto;
+}
+
+header h1{
+    display: grid;
 }
 
 .left-logo {
@@ -571,7 +576,7 @@ select option {
     top: 20px;
     height: 70px;
     vertical-align: middle;
-    margin-right: 2px;
+    margin: auto;
 }
 
 .right-logo {
