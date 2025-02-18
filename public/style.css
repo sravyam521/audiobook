@@ -393,6 +393,7 @@ button:hover {
 #suggestionContent {
     display: none;
     padding: 10px;
+    background-color: #f4f4f9;
 }
 
 #submittedSuggestions {
