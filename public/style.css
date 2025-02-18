@@ -377,7 +377,7 @@ button:hover {
     background-color: #f9f9f9;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
-    z-index: 1000;
+    z-index: 1;
 }
 
 #suggestionHeader {
@@ -393,7 +393,6 @@ button:hover {
 #suggestionContent {
     display: none;
     padding: 10px;
-    background-color: #f4f4f9;
 }
 
 #submittedSuggestions {
