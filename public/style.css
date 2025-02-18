@@ -450,10 +450,6 @@ button:hover {
 }
 /* Responsive Design */
 @media (max-width: 740px) {
-
-    .container1{
-    display: grid;
-}
     
     header h1 {
         font-size: 1.0rem;
