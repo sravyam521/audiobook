@@ -504,6 +504,11 @@ button:hover {
         font-family: Arial, sans-serif;
         z-index: 1000;
     }
+
+    #suggestionContent{
+        height: 25vh;
+        overflow: scroll;
+    }
     
     .audio-player {
         position: fixed;
