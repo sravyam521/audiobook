@@ -29,7 +29,9 @@ body {
     margin-bottom: 10vh;
 }
 
-
+.container1{
+    display: flex;
+}
 /* Header styling */
 header {
     background-color: #004084;
@@ -448,6 +450,11 @@ button:hover {
 }
 /* Responsive Design */
 @media (max-width: 740px) {
+
+    .container1{
+    display: grid;
+}
+    
     header h1 {
         font-size: 1.0rem;
     }
