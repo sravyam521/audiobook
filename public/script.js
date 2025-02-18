@@ -208,7 +208,7 @@ document.getElementById('suggestionHeader').addEventListener('click', () => {
     const bo = document.getElementById('suggestionBox');
 
     suggestionContent.style.display = suggestionContent.style.display === 'block' ? 'none' : 'block';
-    bo.style.bottom = bo.style.bottom === '30vh' ? '70px' : '30vh';
+    bo.style.bottom = bo.style.bottom === '50vh' ? '70px' : '50vh';
 });
 
 async function fetchSuggestions() {
