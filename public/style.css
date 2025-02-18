@@ -424,21 +424,24 @@ button:hover {
     background-color: #0056b3;
 }
 .clickable-box {
+    
     align-items: center;
     justify-content: center;
-    width: 130px;  /* Same width as books */
-    height: 200px; /* Same height as books */
-    background-color: hsl(219, 100%, 38%); /* Blue box */
-    color: white;
+    width: 200px;
+    height: 200px;
+    background-color: hsl(0, 0%, 100%); /* Blue box */
+    color: rgb(0, 0, 0);
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
+    border: 1px;
     border-radius: 8px;
     transition: background-color 0.3s ease;
+    padding: 0 0.2rem;
 }
 
 .clickable-box:hover {
-    background-color: #001a4d;
+    background-color: #ffffff;
 }
 .div {
     display: flex;
