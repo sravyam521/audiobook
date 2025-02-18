@@ -500,7 +500,7 @@ button:hover {
         z-index: 1000;
     }
 
-    #suggestionContent{
+    #submittedSuggestions{
         height: 25vh;
         overflow: scroll;
     }
