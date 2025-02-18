@@ -487,6 +487,7 @@ button:hover {
         height: 120px;
     }
     #suggestionBox {
+        background-color: #ffffff;
         position: fixed;
         bottom: 70px;
         height: 40px;
