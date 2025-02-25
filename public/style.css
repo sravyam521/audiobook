@@ -368,16 +368,22 @@ button:hover {
 
 #suggestionBox {
     position: fixed;
-    bottom: 140px;
+    bottom: 70px;
     right: 30px;
-    width: 300px;
+    width: 250px;
     border: 1px solid #ccc;
     border-radius: 8px;
     background-color: #f9f9f9;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     font-family: Arial, sans-serif;
     z-index: 1000;
-    transition: height 0.3s ease-in-out;
+    height: 40px; /* Collapsed initially */
+    overflow: hidden;
+    transition: height 0.3s ease-in-out; /* Smooth transition */
+}
+
+#suggestionBox.expanded {
+    height: auto; /* Expand to fit content */
 }
 
 #suggestionHeader {
@@ -393,6 +399,10 @@ button:hover {
 #suggestionContent {
     display: none;
     padding: 10px;
+}
+
+#suggestionBox.expanded #suggestionContent {
+    display: block;
 }
 
 #submittedSuggestions {
@@ -487,41 +497,10 @@ button:hover {
     .book img {
         height: 120px;
     }
-    #suggestionBox {
-        background-color: #ffffff;
-        position: fixed;
-        bottom: 70px;
-        height: 40px;
-        right: 15px;
-        width: 220px;
-        border-radius: 8px;
-        background-color: #f9f9f9;
-        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        font-family: Arial, sans-serif;
-        z-index: 1000;
-        overflow: hidden;
-    }
 
-    #suggestionHeader {
-        font-size: 14px;
-        padding: 8px;
-    }
-
-    #suggestionBox.expanded {
-        height: 60vh; /* Expands when clicked */
+     #suggestionBox {
         width: 90%;
         right: 5%;
-        bottom: 10px;
-    }
-
-    #suggestionContent {
-        display: block;
-        padding: 8px;
-    }
-
-    #submittedSuggestions {
-        height: 25vh;
-        overflow-y: auto;
     }
     
     .audio-player {
