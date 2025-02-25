@@ -589,6 +589,18 @@ header h1{
     right: 20px;
     top: 20px;
 }
+    .div {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center; /* Center the boxes */
+        gap: 10px; /* Space between boxes */
+    }
+
+    .clickable-box {
+        width: 160px; /* Adjust the width for smaller screens */
+        height: 200px; /* Adjust height to fit properly */
+        font-size: 12px; /* Smaller text for better fit */
+    }
 }
 
 
