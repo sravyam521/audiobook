@@ -248,6 +248,23 @@ document.getElementById('submitSuggestion').addEventListener('click', async () =
     }
 });
 
+document.addEventListener("DOMContentLoaded", function () {
+    const suggestionBox = document.getElementById("suggestionBox");
+
+    if (suggestionBox) {
+        suggestionBox.addEventListener("click", function () {
+            speakText("You clicked on the suggestion box.");
+        });
+    }
+
+    function speakText(text) {
+        const speech = new SpeechSynthesisUtterance(text);
+        speech.lang = "en-US"; // Set language
+        speech.rate = 1; // Speed of speech
+        window.speechSynthesis.speak(speech);
+    }
+});
+
 // Load suggestions when the page loads
 fetchSuggestions();
 
