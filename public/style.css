@@ -597,8 +597,8 @@ header h1{
     }
 
     .clickable-box {
-        width: 160px; /* Adjust the width for smaller screens */
-        height: 200px; /* Adjust height to fit properly */
+        width: 120px; /* Adjust the width for smaller screens */
+        height: 120px; /* Adjust height to fit properly */
         font-size: 12px; /* Smaller text for better fit */
     }
 }
