@@ -264,7 +264,10 @@ document.addEventListener("DOMContentLoaded", function () {
         window.speechSynthesis.speak(speech);
     }
 });
-
+document.getElementById("suggestionHeader").addEventListener("click", function() {
+    var box = document.getElementById("suggestionBox");
+    box.classList.toggle("expanded");
+});
 // Load suggestions when the page loads
 fetchSuggestions();
 
