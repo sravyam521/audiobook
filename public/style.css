@@ -491,19 +491,36 @@ button:hover {
         position: fixed;
         bottom: 70px;
         height: 40px;
-        right: 30px;
-        width: 250px;
-        border: 1px solid #ccc;
+        right: 15px;
+        width: 220px;
         border-radius: 8px;
         background-color: #f9f9f9;
         box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         font-family: Arial, sans-serif;
         z-index: 1000;
+        overflow: hidden;
     }
 
-    #submittedSuggestions{
+    #suggestionHeader {
+        font-size: 14px;
+        padding: 8px;
+    }
+
+    #suggestionBox.expanded {
+        height: 60vh; /* Expands when clicked */
+        width: 90%;
+        right: 5%;
+        bottom: 10px;
+    }
+
+    #suggestionContent {
+        display: block;
+        padding: 8px;
+    }
+
+    #submittedSuggestions {
         height: 25vh;
-        overflow: scroll;
+        overflow-y: auto;
     }
     
     .audio-player {
