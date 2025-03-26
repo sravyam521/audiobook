@@ -11,6 +11,11 @@ document.addEventListener('DOMContentLoaded', function () {
     const searchInput = document.getElementById('searchInput');
     const books = document.querySelectorAll('.book.clickable-box');
 
+        const heading = document.querySelector('h1'); // Select the heading
+
+if (heading) {
+    heading.addEventListener('click', () => announce('CHRIST NSS AUDIOBOOK'));
+}
     if (languageFilter) {
         languageFilter.addEventListener('click', (e) => announce(`To Select Language`));
     }
