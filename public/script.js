@@ -1,9 +1,36 @@
+document.addEventListener("DOMContentLoaded", function () {
+    const suggestionBox = document.getElementById("suggestionBox");
+    const searchBar = document.getElementById("searchInput");
+    const languageFilter = document.getElementById("languageFilter");
+    const subjectFilter = document.getElementById("subjectFilter");
+    const authorFilter = document.getElementById("authorFilter");
+    const booksContainer = document.querySelector('.container');
+    const heading = document.querySelector("h1"); // Targeting the heading
+    const clickableBoxes = document.querySelectorAll(".clickable-box");
+
 async function loadFilters() {
     try {
         const response = await fetch('/api/filters');
         const filters = await response.json();
 
 
+// Announcement for heading click
+    if (heading) {
+        heading.addEventListener("click", function () {
+            speakText("CHRIST NSS AUDIOBOOK.");
+        });
+    }
+
+     // Specific announcements for clickable boxes
+    clickableBoxes.forEach((box, index) => {
+        box.addEventListener("click", function () {
+            if (index === 0) {
+                speakText("OPENING OTHER BOOKS");
+            } else if (index === 1) {
+                speakText("OPENING CATALOGUE");
+            }
+        });
+    });
         
         // Populate language filter
         const languageFilter = document.getElementById('languageFilter');
@@ -13,6 +40,12 @@ async function loadFilters() {
             option.textContent = language;
             languageFilter.appendChild(option);
         });
+        // Announcement for filters
+    if (languageFilter) {
+        languageFilter.addEventListener("change", function () {
+            speakText("Language" + languageFilter.value);
+        });
+    }
         // Populate subject filter
         const subjectFilter = document.getElementById('subjectFilter');
         filters.subjects.forEach(subject => {
@@ -21,6 +54,11 @@ async function loadFilters() {
             option.textContent = subject;
             subjectFilter.appendChild(option);
         });
+        if (subjectFilter) {
+            subjectFilter.addEventListener("change", function () {
+                speakText("Subject" + subjectFilter.value);
+            });
+        }
 
         // Populate author filter
         const authorFilter = document.getElementById('authorFilter');
@@ -30,6 +68,11 @@ async function loadFilters() {
             option.textContent = author;
             authorFilter.appendChild(option);
         });
+        if (authorFilter) {
+            authorFilter.addEventListener("change", function () {
+                speakText("Author" + authorFilter.value);
+            });
+        }
     } catch (error) {
         console.error('Error loading filter options:', error);
     }
@@ -64,6 +107,12 @@ function displayBooks(books) {
 
         return matchesSearch && matchesLanguage && matchesSubject && matchesAuthor;
     });
+    // Announcement for search bar
+    if (searchBar) {
+        searchBar.addEventListener("click", function () {
+            speakText("To Search the Book");
+        });
+    }
 
     // Display filtered books
     filteredBooks.forEach(book => {
@@ -77,6 +126,15 @@ function displayBooks(books) {
         container.appendChild(bookDiv);
     });
 }
+
+ // Announcement for book selection
+ booksContainer.addEventListener("click", function (event) {
+    const clickedBook = event.target.closest('.book');
+    if (clickedBook) {
+        const bookName = clickedBook.querySelector('h2').textContent;
+        speakText("Opening" + bookName);
+    }
+});
 
 // Event listeners for filter changes and search input
 document.getElementById('searchInput').addEventListener('input', () => loadBooks());
@@ -249,12 +307,12 @@ document.getElementById('submitSuggestion').addEventListener('click', async () =
     }
 });
 
-document.addEventListener("DOMContentLoaded", function () {
-    const suggestionBox = document.getElementById("suggestionBox");
+
+
 
     if (suggestionBox) {
         suggestionBox.addEventListener("click", function () {
-            speakText("You clicked on the suggestion box.");
+            speakText("The Required Audiobook.");
         });
     }
 
